@@ -39,7 +39,7 @@ export default class ScoreEntry extends Component {
                     <FormControl
                         name={`${this.props.scope}_${this.props.name}_visitor`}
                         type="text"
-                        placeholder={this.props.disabled ? "" : "Enter score"}
+                        placeholder={this.props.disabled ? '' : 'Enter score'}
                         onChange={this.setScore}
                         disabled={this.props.disabled}
                     />
@@ -48,7 +48,7 @@ export default class ScoreEntry extends Component {
                     <FormControl
                         name={`${this.props.scope}_${this.props.name}_home`}
                         type="text"
-                        placeholder={this.props.disabled ? "" : "Enter score"}
+                        placeholder={this.props.disabled ? '' : 'Enter score'}
                         onChange={this.setScore}
                         disabled={this.props.disabled}
                     />

@@ -13,13 +13,13 @@ const DEFAULT_STATE = Immutable.fromJS({
 
 const score = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
-        case EventActions.TOGGLE_EVENT:
-            return DEFAULT_STATE.merge({
-                [action.payload.eventName]: !state.get(action.payload.eventName)
-            });
-        default:
-            return state;
+    case EventActions.TOGGLE_EVENT:
+        return DEFAULT_STATE.merge({
+            [action.payload.eventName]: !state.get(action.payload.eventName)
+        });
+    default:
+        return state;
     }
 };
 
-export default score
+export default score;

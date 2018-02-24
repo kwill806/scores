@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {combineReducers} from 'redux-immutable';
-import Immutable from 'immutable';
 
 import score from '../reducers/score';
 import event from '../reducers/event';
@@ -23,4 +22,4 @@ export default class App extends Component {
             </Provider>
         );
     }
-};
+}

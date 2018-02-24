@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {FormGroup, ControlLabel, Button, Row, Col} from 'react-bootstrap';
+import {FormGroup, ControlLabel, Button, Row} from 'react-bootstrap';
 import Toggle from 'react-bootstrap-toggle';
 
 import ScoreActions from '../../actions/score';
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         submitScore: bindActionCreators(ScoreActions.submitScore, dispatch),
         toggleEvent: bindActionCreators(EventActions.toggleEvent, dispatch)
-    }
+    };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -52,7 +52,7 @@ export default class Event extends Component {
         const events = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
         return (
             <FormGroup
-                  controlId={this.props.name}
+                controlId={this.props.name}
             >
                 <ControlLabel>{this.props.name}</ControlLabel>
                 <Toggle

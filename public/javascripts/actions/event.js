@@ -9,7 +9,7 @@ const ACTION_CREATORS = {
             payload: {
                 eventName
             }
-        }
+        };
     }
 };
 

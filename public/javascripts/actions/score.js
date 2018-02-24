@@ -10,7 +10,7 @@ const ACTION_CREATORS = {
                 fieldName,
                 value
             }
-        }
+        };
     },
 
     submitScore() {
