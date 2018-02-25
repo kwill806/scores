@@ -4,7 +4,7 @@ var fs = require('fs');
 
 /* POST scores */
 router.post('/', function(req, res) {
-    fs.writeFile('scores.json', JSON.stringify(req.body, null, 2));
+    fs.writeFileSync('scores.json', JSON.stringify(req.body, null, 2));
     res.send('respond with a resource');
 });
 

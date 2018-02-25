@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ScoreEntryApp from './components/ScoreEntryApp';
+import ScoreBoardApp from './components/ScoreBoardApp';
 
-const renderApp = () => {
+const poll = () => {
+    setInterval(() => {
+        renderApp();
+    }, 1000);
+};
+
+const renderApp = async() => {
+    const response = await fetch('/scores');
+    const scores = await response.json();
+
     ReactDOM.render(
-        <ScoreEntryApp/>,
+        <ScoreBoardApp scores={scores}/>,
         document.getElementById('container')
     );
 };
 
 renderApp();
+poll();
