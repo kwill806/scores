@@ -1,5 +1,18 @@
 {
-  "score": {},
+  "score": {
+    "Compulsary": {
+      "Acro": {
+        "visitor": {
+          "score": 10,
+          "show": true
+        },
+        "home": {
+          "score": 10,
+          "show": true
+        }
+      }
+    }
+  },
   "event": {
     "Compulsary": false,
     "Acro": false,

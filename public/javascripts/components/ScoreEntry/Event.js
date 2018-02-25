@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {FormGroup, ControlLabel, Button, Row} from 'react-bootstrap';
@@ -9,47 +10,59 @@ import EventActions from '../../actions/event';
 import ScoreEntry from './ScoreEntry';
 
 const mapStateToProps = (state, props) => {
+    const scores = state.get('score').get(props.name) || [];
+
+    const totals = scores.reduce((obj, curr) => {
+        return {
+            home: obj.home += (curr.getIn(['home', 'score']) || 0),
+            visitor: obj.visitor += (curr.getIn(['visitor', 'score']) || 0),
+        };
+    }, {
+        home: 0,
+        visitor: 0
+    });
+
     return {
+        totals,
         toggled: state.get('event').get(props.name)
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitScore: bindActionCreators(ScoreActions.submitScore, dispatch),
-        toggleEvent: bindActionCreators(EventActions.toggleEvent, dispatch)
+        showScore: bindActionCreators(ScoreActions.showScoreAndSend, dispatch),
+        toggleEvent: bindActionCreators(EventActions.toggleEventAndSend, dispatch)
     };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Event extends Component {
+    static propTypes = {
+        children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
+        name: PropTypes.string.isRequired,
+        showScore: PropTypes.func.isRequired,
+        toggleEvent: PropTypes.func.isRequired,
+        toggled: PropTypes.bool.isRequired,
+        totals: PropTypes.object.isRequired
+    }
+
     static defaultProps = {
-        children: []
+        children: [],
+        totals: {},
+        toggled: false
     };
 
-    constructor() {
-        super();
-
-        this.state = {
-            toggled: false
-        };
-    }
-
-    submitScore = (evt) => {
-        alert(evt.target.name);
-        this.props.submitScore();
-    }
+    showScore = (evt) => {
+        this.props.showScore(evt.target.name);
+    };
 
     onToggle = () => {
         this.props.toggleEvent(this.props.name);
-
-        this.setState({
-            toggled: !this.state.toggled
-        });
     }
 
     render() {
         const events = Array.isArray(this.props.children) ? this.props.children : [this.props.children];
+
         return (
             <FormGroup
                 controlId={this.props.name}
@@ -67,13 +80,13 @@ export default class Event extends Component {
                     return (
                         <Row key={i}>
                             {React.cloneElement(event, {scope: this.props.name})}
-                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_visitor`} onClick={this.submitScore}>Reveal Visitor</Button>
-                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_visitor`} onClick={this.submitScore}>Reveal Home</Button>
+                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_visitor`} onClick={this.showScore}>Reveal Visitor</Button>
+                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_home`} onClick={this.showScore}>Reveal Home</Button>
                         </Row>
                     );
                 })}
                 <Row>
-                    <ScoreEntry name="Total" disabled/>
+                    <ScoreEntry name="Total" scores={this.props.totals} disabled/>
                 </Row>
             </FormGroup>
         );

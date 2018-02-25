@@ -8,10 +8,10 @@ export default class Header extends Component {
                 <Row className="team-header">
                     <Col xs={2}/>
                     <Col xs={2}>
-                        <span>Converse</span>
+                        <span>Gannon</span>
                     </Col>
                     <Col xs={2}>
-                        <span>Gannon</span>
+                        <span>Converse</span>
                     </Col>
                 </Row>
             </div>
