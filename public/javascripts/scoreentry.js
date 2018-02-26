@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 
 import ScoreEntryApp from './components/ScoreEntryApp';
 
-const renderApp = () => {
+const renderApp = async() => {
+    const response = await fetch('/scores');
+    const data = await response.json();
+
     ReactDOM.render(
-        <ScoreEntryApp/>,
+        <ScoreEntryApp data={data}/>,
         document.getElementById('container')
     );
 };
