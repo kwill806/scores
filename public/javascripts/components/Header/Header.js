@@ -16,11 +16,11 @@ export default class Header extends Component {
             return (
                 <tr>
                     <td>
-                        <img style={{width: '300px', height: '300px'}} src='images/gannon.png'/>
+                        <img style={{width: '200px', height: '200px'}} src='images/gannon.png'/>
                     </td>
                     <td></td>
                     <td>
-                        <img style={{width: '300px', height: '300px'}} src='images/converse.png'/>
+                        <img style={{width: '200px', height: '200px'}} src='images/converse.png'/>
                     </td>
                 </tr>
             );

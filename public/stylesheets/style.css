@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 34px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 25px;
+  font: 44px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -24,6 +24,10 @@ body {
     background-color: #72419A;
     color: #fff;
     border-top: none;
+}
+
+.table > tbody > tr > td {
+    padding: 4px 8px 4px 8px;
 }
 
 a {
