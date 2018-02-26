@@ -6,15 +6,15 @@ import ScoreBoardApp from './components/ScoreBoardApp';
 const poll = () => {
     setInterval(() => {
         renderApp();
-    }, 1000);
+    }, 100);
 };
 
 const renderApp = async() => {
     const response = await fetch('/scores');
-    const scores = await response.json();
+    const data = await response.json();
 
     ReactDOM.render(
-        <ScoreBoardApp scores={scores}/>,
+        <ScoreBoardApp data={data}/>,
         document.getElementById('container')
     );
 };

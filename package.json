@@ -4,7 +4,7 @@
   "description": "A&T Scoreboard App",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "webpack && nodemon src/index.js",
+    "start": "webpack && nodemon --ignore scores.json src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "immutable": "^3.8.2",
+    "lodash": "^4.17.5",
     "morgan": "^1.9.0",
     "nodemon": "^1.15.1",
     "pug": "^2.0.0-rc.4",

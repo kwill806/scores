@@ -22,8 +22,13 @@ const mapStateToProps = (state, props) => {
         visitor: 0
     });
 
+    Object.keys(totals).map((key) => {
+        totals[key] = totals[key].toFixed(3);
+    });
+
     return {
         totals,
+        scores: state.get('score'),
         toggled: state.get('event').get(props.name)
     };
 };
@@ -40,6 +45,7 @@ export default class Event extends Component {
     static propTypes = {
         children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
         name: PropTypes.string.isRequired,
+        scores: PropTypes.object,
         showScore: PropTypes.func.isRequired,
         toggleEvent: PropTypes.func.isRequired,
         toggled: PropTypes.bool.isRequired,
@@ -74,14 +80,15 @@ export default class Event extends Component {
                     off={<h6>Hide</h6>}
                     size="xs"
                     offstyle="danger"
+                    width={84}
                     active={this.props.toggled}
                 />
                 {events.map((event, i) => {
                     return (
                         <Row key={i}>
                             {React.cloneElement(event, {scope: this.props.name})}
-                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_visitor`} onClick={this.showScore}>Reveal Visitor</Button>
-                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_home`} onClick={this.showScore}>Reveal Home</Button>
+                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_visitor`} onClick={this.showScore} disabled={this.props.scores.getIn([this.props.name, event.props.name, 'visitor']) === undefined}>Reveal Visitor</Button>
+                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_home`} onClick={this.showScore} disabled={this.props.scores.getIn([this.props.name, event.props.name, 'home']) === undefined}>Reveal Home</Button>
                         </Row>
                     );
                 })}

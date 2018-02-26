@@ -1,9 +1,10 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 
 var index = require('./routes/index');
 var entry = require('./routes/entry');
@@ -11,6 +12,19 @@ var board = require('./routes/board');
 var scores = require('./routes/scores');
 
 var app = express();
+
+fs.writeFileSync('scores.json', JSON.stringify({
+    'score': {},
+    'event': {
+        'Compulsary': false,
+        'Acro': false,
+        'Pyramid': false,
+        'Toss': false,
+        'Tumbling': false,
+        'Team': false,
+        'Compulsory': false
+    }
+}, null, 2));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,6 +62,6 @@ app.use((err, req, res) => {
     res.render('error');
 });
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('AT app listening on port 3000!'));
 
 module.exports = app;

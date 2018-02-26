@@ -1,5 +1,5 @@
 export default {
-    Compulsary: [
+    Compulsory: [
         'Acro',
         'Pyramid',
         'Toss',

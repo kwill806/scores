@@ -1,10 +1,29 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 34px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container {
+    width: 98%
+}
+
+.header {
+    font-size: 54px
 }
 
 .btn {
     margin: 0px 10px 10px 10px;
+}
+
+.visitor {
+    background-color: #FFBA53;
+    border-top: none;
+}
+
+.home {
+    background-color: #72419A;
+    color: #fff;
+    border-top: none;
 }
 
 a {

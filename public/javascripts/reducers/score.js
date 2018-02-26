@@ -8,7 +8,7 @@ const score = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
     case ScoreActions.SET_SCORE:
         return state.mergeIn(action.payload.fieldName.split('_'), Immutable.fromJS({
-            score: parseInt(action.payload.value)
+            score: parseFloat(action.payload.value)
         }));
     case ScoreActions.SHOW_SCORE:
         return state.mergeIn(action.payload.fieldName.split('_'), Immutable.fromJS({
