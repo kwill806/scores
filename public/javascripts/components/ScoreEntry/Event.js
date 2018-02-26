@@ -87,8 +87,24 @@ export default class Event extends Component {
                     return (
                         <Row key={i}>
                             {React.cloneElement(event, {scope: this.props.name})}
-                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_visitor`} onClick={this.showScore} disabled={this.props.scores.getIn([this.props.name, event.props.name, 'visitor']) === undefined}>Reveal Visitor</Button>
-                            <Button bsStyle="primary" name={`${this.props.name}_${event.props.name}_home`} onClick={this.showScore} disabled={this.props.scores.getIn([this.props.name, event.props.name, 'home']) === undefined}>Reveal Home</Button>
+                            <Button
+                                bsStyle="primary"
+                                name={`${this.props.name}_${event.props.name}_visitor`}
+                                onClick={this.showScore}
+                                disabled={!this.props.scores.getIn([this.props.name, event.props.name, 'visitor', 'score'])}
+                                tabIndex="-1"
+                            >
+                                Reveal Visitor
+                            </Button>
+                            <Button
+                                bsStyle="primary"
+                                name={`${this.props.name}_${event.props.name}_home`}
+                                onClick={this.showScore}
+                                disabled={!this.props.scores.getIn([this.props.name, event.props.name, 'home', 'score'])}
+                                tabIndex="-1"
+                            >
+                                Reveal Home
+                            </Button>
                         </Row>
                     );
                 })}
