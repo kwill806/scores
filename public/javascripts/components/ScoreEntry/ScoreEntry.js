@@ -6,22 +6,7 @@ import {FormControl, Col} from 'react-bootstrap';
 
 import ScoreActions from '../../actions/score';
 
-const mapStateToProps = (state, props) => {
-    if (props.scores) {
-        return {
-            scores: props.scores
-        };
-    }
-
-    if (state.get('score').getIn([props.scope, props.name])) {
-        return {
-            scores: {
-                visitor: state.get('score').getIn([props.scope, props.name, 'visitor', 'score']) || null,
-                home: state.get('score').getIn([props.scope, props.name, 'home', 'score']) || null
-            }
-        };
-    }
-
+const mapStateToProps = (state) => {
     return {state};
 };
 
