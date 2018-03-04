@@ -16,7 +16,7 @@ export default class Header extends Component {
             return (
                 <tr>
                     <td>
-                        <img style={{width: '200px', height: '200px'}} src='images/gannon.png'/>
+                        <img style={{width: '200px', height: '200px'}} src='images/baylor.png'/>
                     </td>
                     <td></td>
                     <td>
@@ -31,7 +31,7 @@ export default class Header extends Component {
                 <Row className="team-header">
                     <Col xs={2}/>
                     <Col xs={2}>
-                        <span>Gannon</span>
+                        <span>Baylor</span>
                     </Col>
                     <Col xs={2}>
                         <span>Converse</span>
