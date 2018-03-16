@@ -1498,7 +1498,7 @@ module.exports = function (it) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
+ * 
  */
 
 function makeEmptyFunction(arg) {
@@ -3946,7 +3946,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
       var array = this._array;
       var maxIndex = array.length - 1;
       var ii = 0;
-      return new Iterator(function()
+      return new Iterator(function() 
         {return ii > maxIndex ?
           iteratorDone() :
           iteratorValue(type, ii, array[reverse ? maxIndex - ii++ : ii++])}
@@ -4417,7 +4417,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 
     Repeat.prototype.__iterator = function(type, reverse) {var this$0 = this;
       var ii = 0;
-      return new Iterator(function()
+      return new Iterator(function() 
         {return ii < this$0.size ? iteratorValue(type, ii++, this$0._value) : iteratorDone()}
       );
     };
@@ -6615,7 +6615,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
         return flipSequence;
       };
     }
-    reversedSequence.get = function(key, notSetValue)
+    reversedSequence.get = function(key, notSetValue) 
       {return iterable.get(useKeys ? key : -1 - key, notSetValue)};
     reversedSequence.has = function(key )
       {return iterable.has(useKeys ? key : -1 - key)};
@@ -6814,7 +6814,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
         return this.cacheResult().__iterate(fn, reverse);
       }
       var iterations = 0;
-      iterable.__iterate(function(v, k, c)
+      iterable.__iterate(function(v, k, c) 
         {return predicate.call(context, v, k, c) && ++iterations && fn(v, k, this$0)}
       );
       return iterations;
@@ -7005,7 +7005,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
     interposedSequence.size = iterable.size && iterable.size * 2 -1;
     interposedSequence.__iterateUncached = function(fn, reverse) {var this$0 = this;
       var iterations = 0;
-      iterable.__iterate(function(v, k)
+      iterable.__iterate(function(v, k) 
         {return (!iterations || fn(separator, iterations++, this$0) !== false) &&
         fn(v, iterations++, this$0) !== false},
         reverse
@@ -10415,7 +10415,7 @@ module.exports = getActiveElement;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- *
+ * 
  */
 
 /*eslint-disable no-self-compare */
@@ -10487,7 +10487,7 @@ module.exports = shallowEqual;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
+ * 
  */
 
 var isTextNode = __webpack_require__(184);
@@ -15413,7 +15413,7 @@ function wrapMapToPropsConstant(getConstant) {
 // dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
 // to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
 // whether mapToProps needs to be invoked when props have changed.
-//
+// 
 // A length of one signals that mapToProps does not depend on props from the parent component.
 // A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
 // therefore not reporting its length accurately..
@@ -15423,16 +15423,16 @@ function getDependsOnOwnProps(mapToProps) {
 
 // Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
 // this function wraps mapToProps in a proxy function which does several things:
-//
+// 
 //  * Detects whether the mapToProps function being called depends on props, which
 //    is used by selectorFactory to decide if it should reinvoke on props changes.
-//
+//    
 //  * On first call, handles mapToProps if returns another function, and treats that
 //    new function as the true mapToProps for subsequent calls.
-//
+//    
 //  * On first call, verifies the first result is a plain object, in order to warn
 //    the developer that their mapToProps function is not returning a valid result.
-//
+//    
 function wrapMapToPropsFunc(mapToProps, methodName) {
   return function initProxySelector(dispatch, _ref) {
     var displayName = _ref.displayName;
@@ -23154,7 +23154,7 @@ var AsyncUpdates = 1;
   try {
     var nonExtensibleObject = Object.preventExtensions({});
     /* eslint-disable no-new */
-
+    
     /* eslint-enable no-new */
   } catch (e) {
     // TODO: Consider warning about bad polyfills
@@ -29284,7 +29284,7 @@ function setValueForProperty(node, name, value) {
   }
 
   {
-
+    
   }
 }
 
@@ -29299,7 +29299,7 @@ function setValueForAttribute(node, name, value) {
   }
 
   {
-
+    
   }
 }
 
@@ -45176,7 +45176,7 @@ function createProvider() {
     (global.hoistNonReactStatics = factory());
 }(this, (function () {
     'use strict';
-
+    
     var REACT_STATICS = {
         childContextTypes: true,
         contextTypes: true,
@@ -45188,7 +45188,7 @@ function createProvider() {
         propTypes: true,
         type: true
     };
-
+    
     var KNOWN_STATICS = {
         name: true,
         length: true,
@@ -45198,30 +45198,30 @@ function createProvider() {
         arguments: true,
         arity: true
     };
-
+    
     var defineProperty = Object.defineProperty;
     var getOwnPropertyNames = Object.getOwnPropertyNames;
     var getOwnPropertySymbols = Object.getOwnPropertySymbols;
     var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
     var getPrototypeOf = Object.getPrototypeOf;
     var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
-
+    
     return function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
         if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-
+            
             if (objectPrototype) {
                 var inheritedComponent = getPrototypeOf(sourceComponent);
                 if (inheritedComponent && inheritedComponent !== objectPrototype) {
                     hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
                 }
             }
-
+            
             var keys = getOwnPropertyNames(sourceComponent);
-
+            
             if (getOwnPropertySymbols) {
                 keys = keys.concat(getOwnPropertySymbols(sourceComponent));
             }
-
+            
             for (var i = 0; i < keys.length; ++i) {
                 var key = keys[i];
                 if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
@@ -45231,10 +45231,10 @@ function createProvider() {
                     } catch (e) {}
                 }
             }
-
+            
             return targetComponent;
         }
-
+        
         return targetComponent;
     };
 })));
@@ -45367,7 +45367,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
   selectorFactory, which has the signature:
 
     (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
-
+  
   connect passes its args to connectAdvanced as options, which will in turn pass them to
   selectorFactory each time a Connect component instance is instantiated or hot reloaded.
 
